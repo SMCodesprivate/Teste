@@ -15,11 +15,12 @@ function load() {
   // }
   if(teste) {
     emailInput.value = infos;
-    window.location.href = "http://pt.stackoverflow.com";
+    window.location.href = "/dashboard";
   }  else {
     console.log("Não logado");
   }
 }
+load();
 
 
 function getRandomColor() {
@@ -36,7 +37,6 @@ function getRandomColorDark() {
 	return color;
 }
 corpoIndex.onload = function() {
-  load();
   menuCadastro.style.transition = "1.5s all linear";
   emailInput.style.transition = "1.5s all ease"; 
 }
