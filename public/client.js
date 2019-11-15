@@ -1,26 +1,20 @@
-var emailInput = document.querySelector("#inputEmail");
-var formCadastro = document.querySelector("#formularioCadastro");
-var bottonInput = document.querySelector("#inputBotton");
-var menuCadastro = document.querySelector("#menuCadastro");
-var corpoIndex = document.querySelector("#corpo");
 
 function load() {
   var teste = localStorage.getItem("logado");
   var infos = localStorage.getItem("user_infos");
   console.log(teste);
-  // if(teste) {
-    // console.log("Está loado");
-  // } else {
-    // console.log("Não está logado");
-  // }
   if(teste) {
-    emailInput.value = infos;
     window.location.href = "/dashboard";
-  }  else {
-    console.log("Não logado");
   }
 }
 load();
+
+
+var emailInput = document.querySelector("#inputEmail");
+var formCadastro = document.querySelector("#formularioCadastro");
+var bottonInput = document.querySelector("#inputBotton");
+var menuCadastro = document.querySelector("#menuCadastro");
+var corpoIndex = document.querySelector("#corpo");
 
 
 function getRandomColor() {
@@ -55,8 +49,14 @@ function cadastrarUser(user_name) {
   localStorage.setItem("logado", true);
   localStorage.setItem("user_infos", user_name);
 }
+
+corpoIndex.addEventListener("keydown", function (e) {
+  console.log(e);
+})
+
 bottonInput.onclick = function() {
   cadastrarUser(emailInput.value);
+  load()
 };
 
 

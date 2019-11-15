@@ -1,10 +1,17 @@
-// alert("Teste");
+function verificar() {
+  var teste = localStorage.getItem("logado");
+  var infos = localStorage.getItem("user_infos");
+  console.log(teste);
+  if(!teste) {
+    window.location.href = "/";
+  }
+}
+verificar()
 
 var corpo = document.querySelector("#corpoDashboard");
 var loads = document.querySelector("#load");
 var loadinging = document.querySelector("#loadinggg");
 function createLoading(daddy) {
-
   var load = document.createElement("div");
   load.style.position = "fixed";
   load.style.width = "100%";
@@ -18,13 +25,10 @@ function createLoading(daddy) {
   htmlObject.style.textAlign = "center";
   htmlObject.style.justifyContent = "center";
   htmlObject.style.alignItems = "center";
-// justify-content: center;
-// align-items: center
   htmlObject.innerHTML = teste;
   console.log(htmlObject);
   load.appendChild(htmlObject);
   loads.appendChild(load);
-    
   setTimeout(() => {
     loads.removeChild(load);   
   }, 5000)
