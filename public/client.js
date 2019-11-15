@@ -50,8 +50,11 @@ function cadastrarUser(user_name) {
   localStorage.setItem("user_infos", user_name);
 }
 
-corpoIndex.addEventListener("keydown", function (e) {
-  console.log(e);
+emailInput.addEventListener("keydown", function (e) {
+  cadastrarUser(emailInput.value);
+  if(e.key == "Enter") {
+    load()
+  }
 })
 
 bottonInput.onclick = function() {
