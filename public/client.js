@@ -1,7 +1,19 @@
 var emailInput = document.querySelector("#inputEmail");
 var formCadastro = document.querySelector("#formularioCadastro");
+var bottonInput = document.querySelector("#inputBotton");
 var menuCadastro = document.querySelector("#menuCadastro");
 var corpoIndex = document.querySelector("#corpo");
+
+function load() {
+  var teste = localStorage.getItem("logado");
+  console.log(teste);
+  if(teste == true) return console.lo9
+  // if(teste != null && teste === true) {
+  //   console.log("Logado");
+  // }
+}
+
+
 function getRandomColor() {
 	var letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWYZ";
 	var color = "";
@@ -22,10 +34,21 @@ corpoIndex.onload = function() {
 var color = getRandomColor();
 emailInput.style.boxShadow = "0px 3px 0px #"+color;
 formCadastro.appendChild(emailInput);
-setInterval(trocarColor, 150)
+setInterval(trocarColor, 350)
 function trocarColor() {
 	var color = getRandomColorDark();
 	menuCadastro.style.border = "4px solid #"+color;
 	var colorId = getRandomColor();
   emailInput.style.boxShadow =  "0px 3px 0px #"+colorId;
 }
+
+function cadastrarUser(user_name) {
+  localStorage.setItem("logado", true);
+  localStorage.setItem("user_infos", JSON.stringify(user_name));
+}
+bottonInput.onclick = function() {
+  cadastrarUser(emailInput.value);
+};
+
+
+
