@@ -6,11 +6,19 @@ var corpoIndex = document.querySelector("#corpo");
 
 function load() {
   var teste = localStorage.getItem("logado");
+  var infos = localStorage.getItem("user_infos");
   console.log(teste);
-  if(teste == true) return console.lo9
-  // if(teste != null && teste === true) {
-  //   console.log("Logado");
+  // if(teste) {
+    // console.log("Está loado");
+  // } else {
+    // console.log("Não está logado");
   // }
+  if(teste) {
+    emailInput.value = infos;
+    window.location.href = "http://pt.stackoverflow.com";
+  }  else {
+    console.log("Não logado");
+  }
 }
 
 
@@ -28,6 +36,7 @@ function getRandomColorDark() {
 	return color;
 }
 corpoIndex.onload = function() {
+  load();
   menuCadastro.style.transition = "1.5s all linear";
   emailInput.style.transition = "1.5s all ease"; 
 }
@@ -44,7 +53,7 @@ function trocarColor() {
 
 function cadastrarUser(user_name) {
   localStorage.setItem("logado", true);
-  localStorage.setItem("user_infos", JSON.stringify(user_name));
+  localStorage.setItem("user_infos", user_name);
 }
 bottonInput.onclick = function() {
   cadastrarUser(emailInput.value);
