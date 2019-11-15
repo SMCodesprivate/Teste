@@ -1,42 +1,32 @@
-// client-side js
-// run by the browser each time your view template is loaded
-
-console.log("hello world :o");
-
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-
-// define variables that reference elements on our page
-const dreamsList = document.getElementById("dreams");
-const dreamsForm = document.forms[0];
-const dreamInput = dreamsForm.elements["dream"];
-
-// a helper function that creates a list item for a given dream
-const appendNewDream = function(dream) {
-  const newListItem = document.createElement("li");
-  newListItem.innerHTML = dream;
-  dreamsList.appendChild(newListItem);
-};
-
-// iterate through every dream and add it to our page
-dreams.forEach(function(dream) {
-  appendNewDream(dream);
-});
-
-// listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = function(event) {
-  // stop our form submission from refreshing the page
-  event.preventDefault();
-
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
-
-  // reset form
-  dreamInput.value = "";
-  dreamInput.focus();
-};
+var emailInput = document.querySelector("#inputEmail");
+var formCadastro = document.querySelector("#formularioCadastro");
+var menuCadastro = document.querySelector("#menuCadastro");
+function getRandomColor() {
+	var letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWYZ";
+	var color = "";
+	for (var i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+function getRandomColorDark() {
+	var colors = ["a", "33335F", "933445", '555559'];
+	color = colors[Math.floor(Math.random() * 3)];
+	return color;
+}
+var color = getRandomColor();
+emailInput.style.boxShadow = "0px 3px 0px #"+color;
+formCadastro.appendChild(emailInput);
+setInterval(trocarColor, 250)
+function trocarColor() {
+	var color = getRandomColorDark();
+	menuCadastro.style.border = "4px solid #"+color;
+	var colorId = getRandomColor();
+    emailInput.style.boxShadow =  "0px 3px 0px #"+colorId;
+}
+// setInterval(() => {
+// 	var color = getRandomColorDark();
+// 	menuCadastro.style.border = "4px solid #"+color;
+//     var colorId = getRandomColor();
+//     emailInput.style.boxShadow =  "0px 3px 0px #"+colorId;
+// }, 950);
